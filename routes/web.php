@@ -6,5 +6,8 @@ Route::get('/', function () {
 
 Route::get('/people', 'PeopleController@index');
 Route::get('/people/{id}', 'PeopleController@show');
-Route::get('/blogs', 'BlogController@index');
-Route::get('/blogs/{id}', 'BlogController@show');
+Route::get('/people/{id}/posts', 'PeopleController@posts');
+Route::get('/blog', 'BlogController@index');
+Route::get('/blog/{id}', 'BlogController@show');
+
+
