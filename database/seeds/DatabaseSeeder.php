@@ -4,9 +4,6 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-
-
-
     /**
      * Run the database seeds.
      *
@@ -14,7 +11,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-    	App\Person::truncate();
-    	$this->call('PersonsTableSeeder');
+        App\Person::truncate();
+        $this->call('PersonsTableSeeder');
+    	App\Blog::truncate();
+    	$this->call('BlogsTableSeeder');
     }
 }

@@ -15,7 +15,7 @@ class PersonsTableSeeder extends Seeder
     {
         $faker = Faker::create();
 
-        foreach (range(1,100) as $num) {
+        foreach (range(1,50) as $num) {
         	Person::create([
             	'first' => $faker->firstName,
             	'last' => $faker->lastName,

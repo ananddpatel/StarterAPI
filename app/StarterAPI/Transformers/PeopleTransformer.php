@@ -7,6 +7,11 @@ namespace App\StarterAPI\Transformers;
 */
 class PeopleTransformer extends Transformer
 {
+    /**
+     * transforms a single person array
+     * @param  array $person the Person array
+     * @return array
+     */
 	public function transform($person)
 	{
 		return [

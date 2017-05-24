@@ -6,11 +6,16 @@ use Illuminate\Http\Request;
 use App\StarterAPI\Transformers\PeopleTransformer;
 use App\Person;
 
-class PeopleController extends Controller
+class PeopleController extends ApiController
 {
-
+    /**
+     * @var App\StarterAPI\Transformers\PeopleTransformer
+     */
     protected $peopleTransformer;
 
+    /**
+     * @param PeopleTransformer $peopleTransformer transformer for people data
+     */
     function __construct(PeopleTransformer $peopleTransformer)
     {
         $this->peopleTransformer = $peopleTransformer;
@@ -23,9 +28,9 @@ class PeopleController extends Controller
     public function index()
     {
     	$people = Person::all();
-    	return response([
-    		'data' => $this->peopleTransformer->transformCollection($people),
-    	], 200);
+    	return $this->respondOk([
+    		'data' => $this->peopleTransformer->transformCollection($people)
+    	]);
     }
 
     /**
@@ -37,10 +42,10 @@ class PeopleController extends Controller
     {
     	$person = Person::find($id);
     	if (!$person) {
-    		return response([
-    			'error' => ['message' => "Person doesn't exist."]
-    		], 404);
-    	} 
-		return response(['data' => $this->peopleTransformer->transform($person)], 200);
+            return $this->respondNotFound("Person doesn't exist");
+        }
+        return $this->respondOk([
+            'data' => $this->peopleTransformer->transform($person)
+        ]);
     }
 }
