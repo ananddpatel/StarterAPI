@@ -13,4 +13,8 @@ class Person extends Model
     	return $this->hasMany(Blog::class);
     }
 
+    public function comments()
+    {
+    	return $this->hasMany(Comment::class);
+    }
 }

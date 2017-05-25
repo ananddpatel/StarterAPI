@@ -4,6 +4,11 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
+    private $tableNames = [
+        'people',
+        'blogs',
+        'comments'
+    ];
     /**
      * Run the database seeds.
      *
@@ -11,9 +16,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        App\Person::truncate();
+        $this->cleanUp();
         $this->call('PersonsTableSeeder');
-    	App\Blog::truncate();
-    	$this->call('BlogsTableSeeder');
+        $this->call('BlogsTableSeeder');
+        $this->call('CommentsTableSeeder');
+    }
+
+    private function cleanUp()
+    {
+        foreach($this->tableNames as $tableName)
+        {
+            DB::table($tableName)->truncate();
+        }
     }
 }
