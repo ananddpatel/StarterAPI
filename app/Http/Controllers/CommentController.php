@@ -18,6 +18,10 @@ class CommentController extends ApiController
 		$this->commentTransformer = $commentTransformer;
 	}
 
+	/**
+	 * returns all comments
+	 * @return json
+	 */
 	public function index()
 	{
 		$comments = Comment::all();
@@ -27,12 +31,15 @@ class CommentController extends ApiController
 		]);
 	}
 
+	/**
+	 * returns a single comment
+	 * @param  int $id comment id
+	 * @return mixed
+	 */
 	public function show($id)
 	{
 		$comment = Comment::find($id);
-		if(!$comment) {
-			return $this->respondNotFound("Comment doesn't exist");
-		}
+		if(!$comment) {return $this->respondNotFound("Comment doesn't exist");}
 		return $this->respondOk([
 			'data' => $this->commentTransformer->transform($comment)
 		]);

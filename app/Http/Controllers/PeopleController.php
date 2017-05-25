@@ -11,9 +11,9 @@ use App\Person;
 class PeopleController extends ApiController
 {
     /**
-     * @var App\StarterAPI\Transformers\PeopleTransformer
-     * @var App\StarterAPI\Transformers\BlogTransformer
-     * @var App\StarterAPI\Transformers\CommentTransformer
+     * @var App\StarterAPI\Transformers\PeopleTransformer $peopleTransformer
+     * @var App\StarterAPI\Transformers\BlogTransformer $blogTransformer
+     * @var App\StarterAPI\Transformers\CommentTransformer $commentTransformer
      */
     protected $peopleTransformer;
     protected $blogTransformer;
@@ -51,20 +51,21 @@ class PeopleController extends ApiController
     public function show($id)
     {
         $person = Person::find($id);
-        if (!$person) {
-            return $this->respondNotFound("Person doesn't exist");
-        }
+        if (!$person) {return $this->respondNotFound("Person doesn't exist");}
         return $this->respondOk([
             'data' => $this->peopleTransformer->transform($person)
         ]);
     }
 
+    /**
+     * returns all posts by a person
+     * @param  int $id person id
+     * @return mixed
+     */
     public function posts($id)
     {
         $person = Person::find($id);
-        if (!$person) {
-            return $this->respondNotFound("Person doesn't exist");
-        }
+        if (!$person) {return $this->respondNotFound("Person doesn't exist");}
         $blogs = $person->blogs;
         return $this->respondOk([
             'data' => [
@@ -74,19 +75,21 @@ class PeopleController extends ApiController
         ]);
     }
     
+    /**
+     * returns all comments by a single person
+     * @param  int $id person id
+     * @return mixed
+     */
     public function comments($id)
     {
         $person = Person::find($id);
-        if (!$person) {
-            return $this->respondNotFound("Person doesn't exist");
-        }
-        $comments = $person->comments;
+        if (!$person) {return $this->respondNotFound("Person doesn't exist");}
         return $this->respondOk([
             'data' => [
                 'person' => $this->peopleTransformer->transform($person),
-                'comments' => $this->commentTransformer->transformCollection($comments)
+                'comments' => $this->commentTransformer->transformCollection($person->comments)
             ]    
         ]);
-    }    
+    }
     
 }

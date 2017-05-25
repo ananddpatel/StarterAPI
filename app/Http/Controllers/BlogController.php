@@ -38,20 +38,21 @@ class BlogController extends ApiController
     public function show($id)
     {
     	$blog = Blog::find($id);
-    	if (!$blog) {
-    		return $this->respondNotFound("Blog post doesn't exist");
-    	}
+    	if (!$blog) {return $this->respondNotFound("Blog post doesn't exist");}
     	return $this->respondOk([
     		'data' => $this->blogTransformer->transform($blog)
     	]);
     }
 
+    /**
+     * returns all comments assocaited with a blog post
+     * @param  int $id blog id
+     * @return mixed
+     */
     public function comments($id)
     {
         $blog = Blog::find($id);
-        if (!$blog) {
-            return $this->respondNotFound("Blog post doesn't exist");
-        }
+        if (!$blog) {return $this->respondNotFound("Blog post doesn't exist");}
         $comments = $blog->comments;
         return $this->respondOk([
             'data' => [
