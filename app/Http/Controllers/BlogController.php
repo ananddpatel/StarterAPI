@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\StarterAPI\Transformers\BlogTransformer;
 use App\StarterAPI\Transformers\CommentTransformer;
 use App\Blog;
+use Validator;
 
 class BlogController extends ApiController
 {
@@ -60,6 +61,33 @@ class BlogController extends ApiController
                 'comments' => $this->commentTransformer->transformCollection($comments)
             ]
         ]);
+    }
+
+    /**
+     * simulates storing a new blog post
+     * @return mixed return all data used to create a blog post or an error.
+     */
+    public function store(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'title' => 'required',
+            'body' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            return $this->respondBadRequest('title and body fields are required.');
+        }
+
+        return $this->respondCreated([
+            'data' => [
+                'id' => count(Blog::get()) + 1,
+                'person_id' => rand(1, count(\App\Person::get())),
+                'post' => [
+                    'title' => request('title'),
+                    'body' => request('body')
+                ],
+            ]
+        ], "Blog created");
     }
 
 }

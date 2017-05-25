@@ -36,11 +36,17 @@ class ApiController extends Controller
 		return response($data, $this->getStatusCode(), $headers);
 	}
 
-	public function respondOk($data, $headers = [])
+	/**
+	 * sends a 200 response
+	 * @param  array $data    the data
+	 * @param  array  $headers any headers
+	 * @return mixed
+	 */
+	public function respondOk($data, $message = "Ok", $headers = [])
 	{
 		$data['status'] = [
 				'code' => $this->getStatusCode(),
-				'message' => 'Ok'
+				'message' => $message
 			];
 		return response($data, $this->getStatusCode(), $headers);
 	}
@@ -78,6 +84,28 @@ class ApiController extends Controller
 	public function respondInternalError($message = "Internal Error.")
 	{
 		return $this->setStatusCode(500)->respondWithError($message);
+	}
+
+	/**
+	 * returns a response with error and status code 400
+	 * @param  string $message the bad request message
+	 * @return mixed
+	 */
+	public function respondBadRequest($message = "Bad Request.")
+	{
+		return $this->setStatusCode(400)->respondWithError($message);
+	}
+
+	/**
+	 * returns a 201 created response
+	 * @param  array $data    the data to be returned
+	 * @param  string $message the message with the response
+	 * @param  array  $headers any headers
+	 * @return mixed
+	 */
+	public function respondCreated($data, $message = "Created.", $headers = [])
+	{
+		return $this->setStatusCode(201)->respondOk($data, $message, $headers);
 	}
 
 }
