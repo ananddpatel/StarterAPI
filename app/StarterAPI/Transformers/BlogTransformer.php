@@ -15,7 +15,7 @@ class BlogTransformer extends Transformer
 	public function transform($blog)
 	{
 		return [
-            'blog_id' => $blog['id'],
+            'id' => $blog['id'],
             'person_id' => $blog['person_id'],
             'post' => [
                 'title' => $blog['title'],

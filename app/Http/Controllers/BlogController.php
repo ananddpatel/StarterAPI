@@ -4,15 +4,18 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\StarterAPI\Transformers\BlogTransformer;
+use App\StarterAPI\Transformers\CommentTransformer;
 use App\Blog;
 
 class BlogController extends ApiController
 {
     protected $blogTransformer;
+    protected $commentTransformer;
 
-    function __construct(BlogTransformer $blogTransformer)
+    function __construct(BlogTransformer $blogTransformer, CommentTransformer $commentTransformer)
     {
-    	$this->blogTransformer = $blogTransformer;
+        $this->blogTransformer = $blogTransformer;
+    	$this->commentTransformer = $commentTransformer;
     }
 
     /**
@@ -41,6 +44,21 @@ class BlogController extends ApiController
     	return $this->respondOk([
     		'data' => $this->blogTransformer->transform($blog)
     	]);
+    }
+
+    public function comments($id)
+    {
+        $blog = Blog::find($id);
+        if (!$blog) {
+            return $this->respondNotFound("Blog post doesn't exist");
+        }
+        $comments = $blog->comments;
+        return $this->respondOk([
+            'data' => [
+                'blog' => $this->blogTransformer->transform($blog),
+                'comments' => $this->commentTransformer->transformCollection($comments)
+            ]
+        ]);
     }
 
 }

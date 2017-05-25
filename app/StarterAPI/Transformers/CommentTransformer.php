@@ -18,7 +18,7 @@ class CommentTransformer extends Transformer
 			'id' => $comment['id'],
 			'blog_id' => $comment['blog_id'],
 			'person_id' => $comment['person_id'],
-			'comment' => $comment['body'],
+			'body' => $comment['body']
 		];
 	}
 }

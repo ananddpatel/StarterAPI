@@ -34,8 +34,7 @@ class CommentController extends ApiController
 			return $this->respondNotFound("Comment doesn't exist");
 		}
 		return $this->respondOk([
-			'data' => $this->commentTransformer->transform($comment),
+			'data' => $this->commentTransformer->transform($comment)
 		]);
 	}
-
 }
