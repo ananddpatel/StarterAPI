@@ -62,7 +62,7 @@ class PeopleController extends ApiController
      * @param  int $id person id
      * @return mixed
      */
-    public function posts($id)
+    public function blogs($id)
     {
         $person = Person::find($id);
         if (!$person) {return $this->respondNotFound("Person doesn't exist");}
