@@ -38,7 +38,7 @@ class BlogController extends ApiController
      */
     public function show($id)
     {
-    	$blog = Blog::find($id);
+    	$blog = Blog::find($id)->toArray();
     	if (!$blog) {return $this->respondNotFound("Blog post doesn't exist");}
     	return $this->respondOk([
     		'data' => $this->blogTransformer->transform($blog)

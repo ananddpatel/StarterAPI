@@ -21,7 +21,7 @@ class BlogTransformer extends Transformer
                 'title' => $blog['title'],
                 'body' => $blog['body'],
             ],
-            'submitted_at' => $blog['created_at']
+            'submitted' => $blog['created_at']
         ];
 	}
 }
