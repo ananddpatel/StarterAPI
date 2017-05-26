@@ -15,7 +15,7 @@ class Cors
      */
     public function handle($request, Closure $next)
     {
-        $corsRoutes = require('..\config\cors.php');
+        $corsRoutes = require(realpath('../config/cors.php'));
         $route = $request->server()['REQUEST_URI'];
         if (!in_array($route, $corsRoutes['prevent'])) {
             header('Access-Control-Allow-Origin: *');
