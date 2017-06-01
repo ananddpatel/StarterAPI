@@ -25,9 +25,10 @@ class BlogController extends ApiController
      */
     public function index()
     {
-    	$blogs = Blog::all();
+    	$blogs = Blog::simplePaginate(25)->toArray();
     	return $this->respondOk([
-    		'data' => $this->blogTransformer->transformCollection($blogs),
+            'data' => $this->blogTransformer->transformCollection($blogs['data']),
+    		'paginator' => $this->paginator($blogs)
     	]);
     }
 

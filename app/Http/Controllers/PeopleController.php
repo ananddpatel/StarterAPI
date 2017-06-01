@@ -37,9 +37,11 @@ class PeopleController extends ApiController
      */
     public function index()
     {
-    	$people = Person::all();
+        $people = Person::simplePaginate(10)->toArray();
+
     	return $this->respondOk([
-    		'data' => $this->peopleTransformer->transformCollection($people)
+    		'data' => $this->peopleTransformer->transformCollection($people['data']),
+            'paginator' => $this->paginator($people)
     	]);
     }
 

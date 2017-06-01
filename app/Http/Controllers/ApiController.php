@@ -108,4 +108,18 @@ class ApiController extends Controller
 		return $this->setStatusCode(201)->respondOk($data, $message, $headers);
 	}
 
+    /**
+     * returns the paginator data
+     * @param  array $items simplePaginator to Array
+     * @return array        the paginator data
+     */
+    public function paginator($items)
+    {
+        return [
+            'current_page' => $items['current_page'],
+            'prev' => $items['prev_page_url'],
+            'next' => $items['next_page_url']
+        ];
+    }
+
 }

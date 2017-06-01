@@ -24,10 +24,11 @@ class CommentController extends ApiController
 	 */
 	public function index()
 	{
-		$comments = Comment::all();
+		$comments = Comment::simplePaginate(100)->toArray();
 		// return $comments;
 		return $this->respondOk([
-			'data' => $this->commentTransformer->transformCollection($comments)
+			'data' => $this->commentTransformer->transformCollection($comments['data']),
+			'paginator' => $this->paginator($comments)
 		]);
 	}
 
