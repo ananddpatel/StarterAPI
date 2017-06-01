@@ -37,12 +37,16 @@ class PeopleController extends ApiController
      */
     public function index()
     {
-        $people = Person::simplePaginate(10)->toArray();
+        $limit = request()->query('limit') ? : 10;
+        $people = Person::paginate($limit);
 
-    	return $this->respondOk([
-    		'data' => $this->peopleTransformer->transformCollection($people['data']),
-            'paginator' => $this->paginator($people)
-    	]);
+        if (request()->query('page') > $people->lastPage()) {
+            return $this->respondNotFound('Page not found.');
+        };
+
+    	return $this->respondWithPagination([
+    		'data' => $this->peopleTransformer->transformCollection($people->toArray()['data']),
+    	], $people);
     }
 
     /**

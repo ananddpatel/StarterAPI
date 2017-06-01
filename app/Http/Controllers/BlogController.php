@@ -25,11 +25,16 @@ class BlogController extends ApiController
      */
     public function index()
     {
-    	$blogs = Blog::simplePaginate(25)->toArray();
-    	return $this->respondOk([
-            'data' => $this->blogTransformer->transformCollection($blogs['data']),
-    		'paginator' => $this->paginator($blogs)
-    	]);
+        $limit = request()->query('limit') ? : 25;
+        $blogs = Blog::paginate($limit);
+
+        if (request()->query('page') > $blogs->lastPage()) {
+            return $this->respondNotFound('Page not found.');
+        };
+
+        return $this->respondWithPagination([
+                'data' => $this->blogTransformer->transformCollection($blogs->toArray()['data']),
+            ], $blogs);
     }
 
     /**
@@ -41,7 +46,7 @@ class BlogController extends ApiController
     {
     	$blog = Blog::find($id)->toArray();
     	if (!$blog) {return $this->respondNotFound("Blog post doesn't exist");}
-    	return $this->respondOk([
+        return $this->respondOk([
     		'data' => $this->blogTransformer->transform($blog)
     	]);
     }

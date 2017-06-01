@@ -113,13 +113,25 @@ class ApiController extends Controller
      * @param  array $items simplePaginator to Array
      * @return array        the paginator data
      */
-    public function paginator($items)
+    public function paginate($items)
     {
         return [
-            'current_page' => $items['current_page'],
-            'prev' => $items['prev_page_url'],
-            'next' => $items['next_page_url']
+        	'total' => $items->total(),
+            'prev' => $items->previousPageUrl(),
+            'next' => $items->nextPageUrl()
         ];
+    }
+
+    /**
+     * responds 200 OK with paginatated results
+     * @param  array $items     transformed items array
+     * @param  Paginator $paginator paginator instance of items
+     * @return mixed
+     */
+    public function respondWithPagination($items, $paginator)
+    {
+    	$data = array_merge($items, ['paginator' => $this->paginate($paginator)]);
+    	return $this->respondOk($data);
     }
 
 }

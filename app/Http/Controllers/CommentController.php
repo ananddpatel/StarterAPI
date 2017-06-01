@@ -24,12 +24,16 @@ class CommentController extends ApiController
 	 */
 	public function index()
 	{
-		$comments = Comment::simplePaginate(100)->toArray();
-		// return $comments;
-		return $this->respondOk([
-			'data' => $this->commentTransformer->transformCollection($comments['data']),
-			'paginator' => $this->paginator($comments)
-		]);
+		$limit = request()->query('limit') ? : 100;
+		$comments = Comment::paginate($limit);
+
+        if (request()->query('page') > $comments->lastPage()) {
+            return $this->respondNotFound('Page not found.');
+        };
+
+		return $this->respondWithPagination([
+			'data' => $this->commentTransformer->transformCollection($comments->toArray()['data']),
+		], $comments);
 	}
 
 	/**
