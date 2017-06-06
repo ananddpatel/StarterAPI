@@ -7,3 +7,47 @@
 
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+
+/**
+ * TABS
+ */
+.nav-tabs > li, .nav-pills > li {
+    float:none;
+    display:inline-block;
+}
+
+.nav-tabs, .nav-pills {
+    text-align:center;
+}
+
+/**
+ * STICKY FOOTER
+ */
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 60px;
+}
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 30px;
+  background-color: red;
+}
+
+/**
+ * GENERAL
+ */
+#accordion .method {
+	background: royalblue;
+	color: white;
+}
+#accordion .endpoint {
+	background: gold;
+}
