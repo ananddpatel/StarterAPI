@@ -809,13 +809,17 @@ module.exports = Component.exports
 /* 45 */
 /***/ (function(module, exports, __webpack_require__) {
 
+
+/* styles */
+__webpack_require__(60)
+
 var Component = __webpack_require__(1)(
   /* script */
   __webpack_require__(35),
   /* template */
   __webpack_require__(50),
   /* scopeId */
-  null,
+  "data-v-e7b52d06",
   /* cssModules */
   null
 )
@@ -989,7 +993,7 @@ if (false) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
   return _c('div', [_c('nav', {
-    staticClass: "nav nav-tabs"
+    staticClass: "nav nav-pills"
   }, _vm._l((_vm.tabs), function(tab) {
     return _c('li', {
       class: {
@@ -1107,6 +1111,42 @@ module.exports = function listToStyles (parentId, list) {
 __webpack_require__(12);
 module.exports = __webpack_require__(13);
 
+
+/***/ }),
+/* 56 */,
+/* 57 */,
+/* 58 */,
+/* 59 */
+/***/ (function(module, exports, __webpack_require__) {
+
+exports = module.exports = __webpack_require__(10)();
+exports.push([module.i, "\n.nav-pills[data-v-e7b52d06] {\n    margin-bottom: 20px;\n}\n.nav-pills>li.active>a[data-v-e7b52d06] {\n    background-color: #00ADB5;\n}\n.nav>li>a[data-v-e7b52d06]:focus, .nav>li>a[data-v-e7b52d06]:hover {\n    background-color: #EEEEEE;\n    color: #00ADB5;\n}\n", ""]);
+
+/***/ }),
+/* 60 */
+/***/ (function(module, exports, __webpack_require__) {
+
+// style-loader: Adds some css to the DOM by adding a <style> tag
+
+// load the styles
+var content = __webpack_require__(59);
+if(typeof content === 'string') content = [[module.i, content, '']];
+if(content.locals) module.exports = content.locals;
+// add the styles to the DOM
+var update = __webpack_require__(11)("d36f1734", content, false);
+// Hot Module Replacement
+if(false) {
+ // When the styles change, update the <style> tags
+ if(!content.locals) {
+   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-e7b52d06\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tabs.vue", function() {
+     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"id\":\"data-v-e7b52d06\",\"scoped\":true,\"hasInlineConfig\":true}!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./Tabs.vue");
+     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
+     update(newContent);
+   });
+ }
+ // When the module is disposed, remove the <style> tags
+ module.hot.dispose(function() { update(); });
+}
 
 /***/ })
 ],[55]);
