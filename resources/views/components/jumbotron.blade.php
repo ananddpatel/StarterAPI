@@ -8,7 +8,7 @@
             <h2 class="col-md-12">Powered by</h2>
             <i class="devicon devicon-laravel-plain-wordmark colored col-md-6"></i>
             <i class="devicon devicon-vuejs-plain-wordmark colored col-md-6"></i>
-            <p class="col-md-12 col-sm-12">Check it out on: <button class="btn btn-success"><i class="devicon-github-plain"></i> Github</button></p>
+            <p class="col-md-12 col-sm-12">Check it out on: <a href="https://github.com/ananddpatel/StarterAPI" class="btn btn-success"><i class="devicon-github-plain"></i> Github</a></p>
         </div>
     </div>
 </div>
