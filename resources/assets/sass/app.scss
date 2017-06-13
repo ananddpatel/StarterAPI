@@ -1,29 +1,9 @@
 
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
-
-// Variables
-/*@import "variables";*/
+@import url('https://fonts.googleapis.com/css?family=Chewy|Jaldi');
 
 // Bootstrap
-/*@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";*/
-@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css);
-
-/**
- * TABS
- */
-.nav-tabs > li, .nav-pills > li {
-    float:none;
-    display:inline-block;
-}
-
-.nav-tabs, .nav-pills {
-    text-align:center;
-}
-
-/**
- * STICKY FOOTER
- */
+@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 html {
   position: relative;
@@ -34,7 +14,9 @@ body {
   padding-top: 10px;
   margin-bottom: 60px;
   background-color: #27303e;
-  color: #a1a6c0;
+  color: black;
+  font-family: 'Jaldi';
+  font-size: 16px;
 }
 .footer {
   position: absolute;
@@ -47,21 +29,27 @@ body {
   color: #a1a6c0;
 }
 
-/**
- * GENERAL
- */
-#tabs .method {
-	background: #00ADB5;
-	color: white;
-}
-#tabs .endpoint {
-	background: #EEEEEE;
-}
-
 #app .jumbotron {
   background-color: #393E46;
 }
 
 .devicon {
   font-size: 7em;
+  margin-bottom: 10px;
+}
+
+.jumbotron h1 {
+  font-family: 'Chewy', cursive;
+  color: #00ADB5;
+  font-size: 5em;
+}
+
+.jumbotron {
+  color: white;
+  font-family: 'Jaldi', bold;
+}
+
+.btn.btn-success {
+  background-color: #00ADB5;
+  border-color: #00ADB5;
 }

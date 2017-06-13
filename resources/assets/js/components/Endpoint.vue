@@ -35,8 +35,17 @@ export default {
 
 </script>
 
-<style scoped>
+<style>
 	#tabs .selected {
 		background-color: #65d6db;
 	}
+
+    #tabs .method {
+        background: #00ADB5;
+        color: white;
+    }
+
+    #tabs a .endpoint {
+        background: #EEEEEE;
+    }
 </style>

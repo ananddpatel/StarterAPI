@@ -32,14 +32,25 @@ export default {
 <style scoped>
     .nav-pills {
         margin-bottom: 20px;
+        text-align:center;
     }
     
     .nav-pills>li.active>a {
         background-color: #00ADB5;   
     }
 
-    .nav>li>a:focus, .nav>li>a:hover {
+    li>a {
+        color: #00ADB5;
+    }
+
+    .nav>li>a:focus {
         background-color: #EEEEEE;
         color: #00ADB5;
     }
+
+    .nav-pills > li {
+        float:none;
+        display:inline-block;
+    }
+
 </style>
