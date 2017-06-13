@@ -10,7 +10,7 @@
 <script>
 
 export default {
-	props: ['method', 'endpoint'],
+	props: ['method', 'endpoint', 'max'],
 	data() {
 		return {
 			selected: false
@@ -26,7 +26,6 @@ export default {
 				.forEach(function(tab) {
 					tab.$children.forEach(ep => ep.selected = (ep.method == app.method && ep.endpoint == app.endpoint))
 				})
-			// Event.emit('apiCalled')
 		},
 		unselect() {
 			this.selected = false
