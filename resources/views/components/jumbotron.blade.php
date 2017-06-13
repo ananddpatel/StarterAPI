@@ -7,7 +7,7 @@
         <div class="col-md-4">
             <p class="text-center">
                 <a href="http://placeholder.com">
-                    <img src="http://via.placeholder.com/350x150">
+                    <img src="http://via.placeholder.com/315x150">
                 </a>
                 Check it out on 
                 <a class="btn btn-success btn-lg" href="https://github.com/ananddpatel/StarterAPI">

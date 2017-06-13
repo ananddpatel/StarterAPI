@@ -6,8 +6,7 @@
  */
 
 require('./bootstrap');
-
-window.Vue = require('vue');
+require('./Event');
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,8 +14,15 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-// Vue.component('example', require('./components/Example.vue'));
+import Example from './components/Example.vue'
+import Tabs from './components/Tabs.vue'
+import Tab from './components/Tab.vue'
+import Endpoint from './components/Endpoint.vue'
+import EndpointData from './components/EndpointData.vue'
 
-// const app = new Vue({
-//     el: '#app'
-// });
+const app = new Vue({
+    el: '#app',
+    components: { Example, Tabs, Tab, Endpoint,
+    	'endpoint-data': EndpointData
+    }
+});

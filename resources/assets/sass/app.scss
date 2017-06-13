@@ -3,10 +3,11 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
 
 // Variables
-@import "variables";
+/*@import "variables";*/
 
 // Bootstrap
-@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
+/*@import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";*/
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css);
 
 /**
  * TABS
@@ -31,6 +32,8 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  background-color: #27303e;
+  color: #a1a6c0;
 }
 .footer {
   position: absolute;
@@ -38,16 +41,17 @@ body {
   width: 100%;
   /* Set the fixed height of the footer here */
   height: 30px;
-  background-color: red;
+  background-color: #393E46;
+  color: #a1a6c0;
 }
 
 /**
  * GENERAL
  */
-#accordion .method {
-	background: royalblue;
+#tabs .method {
+	background: #00ADB5;
 	color: white;
 }
-#accordion .endpoint {
-	background: gold;
+#tabs .endpoint {
+	background: #EEEEEE;
 }

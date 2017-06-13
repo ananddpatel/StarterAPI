@@ -19,16 +19,17 @@ GET /comments/{id},
     <title>StarterAPI</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="/css/app.css">
 </head>
 <body>
-    <div class="container">
+    <div id="app" class="container">
         
         @yield('content')
 
     </div>
     @include('components.footer')
+    <script src="/js/manifest.js"></script>
+    <script src="/js/vendor.js"></script>
     <script src="/js/app.js"></script>
 </body>
 </html>
