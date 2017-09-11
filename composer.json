@@ -9,7 +9,7 @@
         "laravel/framework": "5.4.*",
         "laravel/tinker": "~1.0",
         "fzaninotto/faker": "~1.4",
-        "imagick": "*"
+        "ext-imagick": "*"
     },
     "require-dev": {
         "mockery/mockery": "0.9.*",
